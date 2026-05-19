@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're in — Jobarro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #F8FAFC;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.08);
+      max-width: 500px;
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid #E2E8F0;
+    }
+    .card-header {
+      background: #2563EB;
+      padding: 36px;
+      text-align: center;
+      color: white;
+    }
+    .card-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      font-size: 16px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 24px;
+      letter-spacing: -0.3px;
+    }
+    .check-circle {
+      width: 64px; height: 64px;
+      background: rgba(255,255,255,.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 28px;
+    }
+    .card-header h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px; }
+    .card-header p  { font-size: 14px; opacity: .85; }
+    .card-body { padding: 36px; }
+    .license-box {
+      background: #EFF6FF;
+      border: 1.5px dashed #BFDBFE;
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .license-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: #64748B;
+      margin-bottom: 10px;
+    }
+    .license-key {
+      font-size: 24px;
+      font-weight: 700;
+      font-family: monospace;
+      color: #2563EB;
+      letter-spacing: 2px;
+      word-break: break-all;
+    }
+    .copy-btn {
+      margin-top: 14px;
+      padding: 8px 18px;
+      background: #DBEAFE;
+      color: #2563EB;
+      border: 1.5px solid #BFDBFE;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .copy-btn:hover { background: #BFDBFE; }
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .step-num {
+      width: 28px; height: 28px;
+      background: #2563EB;
+      color: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .step-text { font-size: 14px; color: #334155; line-height: 1.5; padding-top: 4px; }
+    .step-text strong { color: #0F172A; }
+    .download-btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: #2563EB;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(37,99,235,.3);
+      transition: background .15s, transform .15s;
+    }
+    .download-btn:hover { background: #1D4ED8; transform: translateY(-1px); }
+    .note {
+      text-align: center;
+      font-size: 13px;
+      color: #94A3B8;
+      margin-top: 16px;
+    }
+    .loading { text-align: center; padding: 40px; color: #64748B; }
+    .spinner {
+      width: 32px; height: 32px;
+      border: 3px solid #E2E8F0;
+      border-top-color: #2563EB;
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+      margin: 0 auto 16px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="card" id="card">
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>Activating your license…</p>
+    </div>
+  </div>
+
+<script>
+  const SERVER_URL = "https://jobarro-server-production.up.railway.app";
+
+  const DOWNLOAD_X64   = "https://github.com/privatfatih-png/jobarro-server/releases/download/v1.0.0/Jobarro_0.1.0_x64-setup.exe";
+  const DOWNLOAD_ARM64 = "https://github.com/privatfatih-png/jobarro-server/releases/download/v1.0.0/Jobarro_0.1.0_arm64-setup.exe";
+
+  async function getDownloadUrl() {
+    try {
+      if (navigator.userAgentData) {
+        const data = await navigator.userAgentData.getHighEntropyValues(["architecture"]);
+        if (data.architecture === "arm") return DOWNLOAD_ARM64;
+      }
+    } catch (e) {}
+    return DOWNLOAD_X64;
+  }
+
+  const LOGO_SVG = `<svg width="28" height="28" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="30" height="30" rx="8" fill="rgba(255,255,255,0.25)"/>
+    <rect x="6" y="14" width="4" height="9" rx="2" fill="white"/>
+    <rect x="13" y="8" width="4" height="15" rx="2" fill="white"/>
+    <rect x="20" y="11" width="4" height="11" rx="2" fill="white"/>
+  </svg>`;
+
+  async function load() {
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get("session_id");
+
+    if (!sessionId) {
+      showError("No session found. Please check your email for your license key.");
+      return;
+    }
+
+    try {
+      const res = await fetch(`${SERVER_URL}/api/success?session_id=${sessionId}`);
+      if (!res.ok) throw new Error("License not found");
+      const data = await res.json();
+      const downloadUrl = await getDownloadUrl();
+      showSuccess(data.license_key, downloadUrl);
+    } catch (e) {
+      showError("Something went wrong. Please check your email for your license key, or contact us.");
+    }
+  }
+
+  function showSuccess(licenseKey, downloadUrl) {
+    document.getElementById("card").innerHTML = `
+      <div class="card-header">
+        <div class="card-logo">${LOGO_SVG} Jobarro</div>
+        <div class="check-circle">✓</div>
+        <h1>Payment confirmed!</h1>
+        <p>Your license key is ready. We've also emailed it to you.</p>
+      </div>
+      <div class="card-body">
+        <div class="license-box">
+          <div class="license-label">Your License Key</div>
+          <div class="license-key" id="lk">${licenseKey}</div>
+          <button class="copy-btn" onclick="copyKey()">Copy key</button>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text"><strong>Download and install Jobarro</strong> using the button below.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-text"><strong>Open Jobarro</strong> and paste your license key when prompted.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text"><strong>Fill in your profile</strong> (role, industry, seniority) and you're ready to go.</div>
+          </div>
+        </div>
+
+        <a href="${downloadUrl}" class="download-btn" id="dl-btn">⬇ Download Jobarro for Windows</a>
+        <p class="note">The right version for your PC is selected automatically. Windows 10/11 required.</p>
+      </div>
+    `;
+  }
+
+  function showError(msg) {
+    document.getElementById("card").innerHTML = `
+      <div class="card-body" style="padding:48px 36px;text-align:center;">
+        <div style="font-size:40px;margin-bottom:16px;">⚠️</div>
+        <h2 style="font-size:20px;margin-bottom:10px;">Something went wrong</h2>
+        <p style="color:#475569;font-size:14px;">${msg}</p>
+        <p style="color:#94A3B8;font-size:13px;margin-top:20px;">
+          Email us at <a href="mailto:hello@jobarro.com" style="color:#2563EB;">hello@jobarro.com</a>
+        </p>
+      </div>
+    `;
+  }
+
+  function copyKey() {
+    const key = document.getElementById("lk").textContent;
+    navigator.clipboard.writeText(key).then(() => {
+      const btn = document.querySelector(".copy-btn");
+      btn.textContent = "Copied!";
+      setTimeout(() => btn.textContent = "Copy key", 2000);
+    });
+  }
+
+  load();
+</script>
+</body>
+</html>
