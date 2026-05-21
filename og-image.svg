@@ -31,7 +31,7 @@
   <text x="80" y="388" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="80" fill="#60A5FA" letter-spacing="-2.5">Interview Copilot</text>
 
   <!-- Subheading -->
-  <text x="80" y="452" font-family="Arial, sans-serif" font-weight="400" font-size="26" fill="#64748B">Answers in under 1 second · Invisible to Zoom &amp; Teams</text>
+  <text x="80" y="452" font-family="Arial, sans-serif" font-weight="400" font-size="26" fill="#64748B">Answers in under 1 sec - invisible to screen sharing.</text>
 
   <!-- Badge -->
   <rect x="80" y="492" width="272" height="48" rx="24" fill="#2563EB"/>
