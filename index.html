@@ -380,37 +380,59 @@
       border: 1px solid #FDE68A;
     }
 
-    /* ── Social proof ── */
-    .social-proof {
-      padding: 52px 32px;
+    /* ── Marquee ── */
+    .marquee-section {
+      background: #06091A;
+      padding: 52px 0 48px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      overflow: hidden;
+    }
+
+    .marquee-label {
       text-align: center;
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .social-proof p {
-      font-size: 12px;
-      color: var(--dim);
-      font-weight: 600;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      color: rgba(255,255,255,0.28);
+      margin-bottom: 36px;
       text-transform: uppercase;
-      letter-spacing: .1em;
-      margin-bottom: 24px;
+      padding: 0 24px;
     }
 
-    .company-logos {
+    .marquee-wrapper {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+
+    .marquee-track {
+      display: flex;
+      width: fit-content;
+      animation: marquee-scroll 36s linear infinite;
+    }
+
+    .marquee-track:hover { animation-play-state: paused; }
+
+    .marquee-set {
       display: flex;
       align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 40px;
+      gap: 72px;
+      padding: 0 36px;
     }
 
-    .company-logo {
-      font-size: 15px;
-      font-weight: 700;
-      color: #CBD5E1;
-      letter-spacing: -0.3px;
+    .brand-logo {
+      opacity: 0.75;
+      transition: opacity 0.2s;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .brand-logo:hover { opacity: 1; }
+
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
     }
 
     /* ── Section ── */
@@ -1174,16 +1196,136 @@
   </div>
 </div>
 
-<!-- ── Social proof ── -->
-<div class="social-proof">
-  <p>Used by candidates interviewing at</p>
-  <div class="company-logos">
-    <span class="company-logo">Google</span>
-    <span class="company-logo">Amazon</span>
-    <span class="company-logo">Microsoft</span>
-    <span class="company-logo">Meta</span>
-    <span class="company-logo">Apple</span>
-    <span class="company-logo">McKinsey</span>
+<!-- ── Logo marquee ── -->
+<div class="marquee-section">
+  <p class="marquee-label">Trusted by professionals who secure roles at leading companies</p>
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+
+      <!-- Set 1 -->
+      <div class="marquee-set">
+
+        <!-- Google -->
+        <svg class="brand-logo" height="30" viewBox="0 0 94 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text y="24" font-family="Arial,sans-serif" font-size="26" font-weight="700"><tspan fill="#4285F4">G</tspan><tspan fill="#EA4335">o</tspan><tspan fill="#FBBC04">o</tspan><tspan fill="#4285F4">g</tspan><tspan fill="#34A853">l</tspan><tspan fill="#EA4335">e</tspan></text>
+        </svg>
+
+        <!-- Amazon -->
+        <svg class="brand-logo" height="38" viewBox="0 0 116 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text y="24" font-family="Arial,sans-serif" font-size="24" font-weight="800" fill="white">amazon</text>
+          <path d="M6 31 Q58 44 108 31" stroke="#FF9900" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M103 28 L108 31 L103 34" stroke="#FF9900" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <!-- Microsoft -->
+        <svg class="brand-logo" height="30" viewBox="0 0 134 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="1" width="13" height="13" fill="#F25022"/>
+          <rect x="14" y="1" width="13" height="13" fill="#7FBA00"/>
+          <rect x="0" y="15" width="13" height="13" fill="#00A4EF"/>
+          <rect x="14" y="15" width="13" height="13" fill="#FFB900"/>
+          <text x="32" y="22" font-family="'Segoe UI',Arial,sans-serif" font-size="17" font-weight="300" fill="white">Microsoft</text>
+        </svg>
+
+        <!-- Meta -->
+        <svg class="brand-logo" height="30" viewBox="0 0 75 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text y="24" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#0082FB">Meta</text>
+        </svg>
+
+        <!-- Apple -->
+        <svg class="brand-logo" height="34" viewBox="0 0 28 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M23.5 18c-.1-3.8 3.1-5.7 3.2-5.8-1.7-2.5-4.4-2.9-5.4-2.9-2.3-.2-4.5 1.4-5.7 1.4-1.2 0-3-1.3-4.9-1.3-2.5.1-4.8 1.5-6.1 3.7-2.6 4.5-.7 11.2 1.9 14.9 1.2 1.8 2.7 3.8 4.6 3.7 1.8-.1 2.5-1.2 4.7-1.2 2.2 0 2.8 1.2 4.8 1.1 2-.1 3.2-1.8 4.4-3.6 1.4-2 2-4 2-4.1-.1-.1-3.4-1.4-3.5-5.9zM19.9 6.7c1-1.2 1.7-2.9 1.5-4.7-1.4.1-3.2 1-4.2 2.2-.9 1.1-1.7 2.8-1.5 4.5 1.6.1 3.2-.8 4.2-2z" fill="white"/>
+        </svg>
+
+        <!-- Goldman Sachs -->
+        <svg class="brand-logo" height="30" viewBox="0 0 150 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text y="20" font-family="Arial,sans-serif" font-size="15" font-weight="600" fill="white">Goldman</text>
+          <text y="30" font-family="Arial,sans-serif" font-size="12" font-weight="400" letter-spacing="1" fill="rgba(255,255,255,0.6)">SACHS</text>
+        </svg>
+
+        <!-- McKinsey -->
+        <svg class="brand-logo" height="26" viewBox="0 0 110 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text y="20" font-family="Arial,sans-serif" font-size="16" font-weight="600" fill="white">McKinsey</text>
+        </svg>
+
+        <!-- IBM -->
+        <svg class="brand-logo" height="28" viewBox="0 0 62 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text y="26" font-family="Arial,sans-serif" font-size="32" font-weight="900" fill="#1F70C1">IBM</text>
+        </svg>
+
+        <!-- Spotify -->
+        <svg class="brand-logo" height="30" viewBox="0 0 100 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="15" cy="15" r="15" fill="#1DB954"/>
+          <path d="M7.5 11.5c4.8-1.5 10.2-.8 14 1.6" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M8.5 16c3.8-1.2 8.1-.6 11.3 1.4" stroke="white" stroke-width="1.9" stroke-linecap="round"/>
+          <path d="M9.5 20c2.7-.8 5.8-.4 8 1" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+          <text x="35" y="22" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="white">Spotify</text>
+        </svg>
+
+        <!-- Deloitte -->
+        <svg class="brand-logo" height="26" viewBox="0 0 100 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text y="20" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="white">Deloitte</text>
+          <circle cx="94" cy="6" r="4" fill="#86BC25"/>
+        </svg>
+
+      </div>
+
+      <!-- Set 2 (duplicate for seamless loop) -->
+      <div class="marquee-set" aria-hidden="true">
+
+        <svg class="brand-logo" height="30" viewBox="0 0 94 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text y="24" font-family="Arial,sans-serif" font-size="26" font-weight="700"><tspan fill="#4285F4">G</tspan><tspan fill="#EA4335">o</tspan><tspan fill="#FBBC04">o</tspan><tspan fill="#4285F4">g</tspan><tspan fill="#34A853">l</tspan><tspan fill="#EA4335">e</tspan></text>
+        </svg>
+
+        <svg class="brand-logo" height="38" viewBox="0 0 116 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text y="24" font-family="Arial,sans-serif" font-size="24" font-weight="800" fill="white">amazon</text>
+          <path d="M6 31 Q58 44 108 31" stroke="#FF9900" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M103 28 L108 31 L103 34" stroke="#FF9900" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <svg class="brand-logo" height="30" viewBox="0 0 134 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="1" width="13" height="13" fill="#F25022"/>
+          <rect x="14" y="1" width="13" height="13" fill="#7FBA00"/>
+          <rect x="0" y="15" width="13" height="13" fill="#00A4EF"/>
+          <rect x="14" y="15" width="13" height="13" fill="#FFB900"/>
+          <text x="32" y="22" font-family="'Segoe UI',Arial,sans-serif" font-size="17" font-weight="300" fill="white">Microsoft</text>
+        </svg>
+
+        <svg class="brand-logo" height="30" viewBox="0 0 75 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text y="24" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#0082FB">Meta</text>
+        </svg>
+
+        <svg class="brand-logo" height="34" viewBox="0 0 28 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M23.5 18c-.1-3.8 3.1-5.7 3.2-5.8-1.7-2.5-4.4-2.9-5.4-2.9-2.3-.2-4.5 1.4-5.7 1.4-1.2 0-3-1.3-4.9-1.3-2.5.1-4.8 1.5-6.1 3.7-2.6 4.5-.7 11.2 1.9 14.9 1.2 1.8 2.7 3.8 4.6 3.7 1.8-.1 2.5-1.2 4.7-1.2 2.2 0 2.8 1.2 4.8 1.1 2-.1 3.2-1.8 4.4-3.6 1.4-2 2-4 2-4.1-.1-.1-3.4-1.4-3.5-5.9zM19.9 6.7c1-1.2 1.7-2.9 1.5-4.7-1.4.1-3.2 1-4.2 2.2-.9 1.1-1.7 2.8-1.5 4.5 1.6.1 3.2-.8 4.2-2z" fill="white"/>
+        </svg>
+
+        <svg class="brand-logo" height="30" viewBox="0 0 150 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text y="20" font-family="Arial,sans-serif" font-size="15" font-weight="600" fill="white">Goldman</text>
+          <text y="30" font-family="Arial,sans-serif" font-size="12" font-weight="400" letter-spacing="1" fill="rgba(255,255,255,0.6)">SACHS</text>
+        </svg>
+
+        <svg class="brand-logo" height="26" viewBox="0 0 110 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text y="20" font-family="Arial,sans-serif" font-size="16" font-weight="600" fill="white">McKinsey</text>
+        </svg>
+
+        <svg class="brand-logo" height="28" viewBox="0 0 62 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text y="26" font-family="Arial,sans-serif" font-size="32" font-weight="900" fill="#1F70C1">IBM</text>
+        </svg>
+
+        <svg class="brand-logo" height="30" viewBox="0 0 100 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="15" cy="15" r="15" fill="#1DB954"/>
+          <path d="M7.5 11.5c4.8-1.5 10.2-.8 14 1.6" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M8.5 16c3.8-1.2 8.1-.6 11.3 1.4" stroke="white" stroke-width="1.9" stroke-linecap="round"/>
+          <path d="M9.5 20c2.7-.8 5.8-.4 8 1" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+          <text x="35" y="22" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="white">Spotify</text>
+        </svg>
+
+        <svg class="brand-logo" height="26" viewBox="0 0 100 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text y="20" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="white">Deloitte</text>
+          <circle cx="94" cy="6" r="4" fill="#86BC25"/>
+        </svg>
+
+      </div>
+    </div>
   </div>
 </div>
 
