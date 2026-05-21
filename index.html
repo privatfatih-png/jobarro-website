@@ -382,10 +382,10 @@
 
     /* ── Social proof bar ── */
     .social-bar {
-      background: #06091A;
+      background: var(--bg);
       padding: 22px 32px;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
     .social-bar-inner {
@@ -412,7 +412,7 @@
       width: 38px;
       height: 38px;
       border-radius: 50%;
-      border: 2.5px solid #06091A;
+      border: 2.5px solid var(--bg);
       margin-left: -12px;
       display: flex;
       align-items: center;
@@ -438,18 +438,18 @@
     .rating-num {
       font-size: 16px;
       font-weight: 700;
-      color: white;
+      color: var(--text);
     }
 
     .rating-sub {
       font-size: 12px;
-      color: rgba(255,255,255,0.38);
+      color: var(--dim);
     }
 
     .social-divider {
       width: 1px;
       height: 44px;
-      background: rgba(255,255,255,0.1);
+      background: var(--border);
       flex-shrink: 0;
     }
 
@@ -463,7 +463,7 @@
       display: block;
       font-size: 24px;
       font-weight: 800;
-      color: white;
+      color: var(--text);
       letter-spacing: -0.8px;
       line-height: 1;
       margin-bottom: 3px;
@@ -474,7 +474,7 @@
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.32);
+      color: var(--dim);
       text-transform: uppercase;
     }
 
