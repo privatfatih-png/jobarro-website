@@ -815,12 +815,20 @@
       gap: 6px;
     }
 
-    /* ── Testimonials ── */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+    /* ── Testimonials carousel ── */
+    .testimonials-carousel-wrap {
+      position: relative;
       margin-top: 52px;
+    }
+
+    .testimonials-viewport {
+      overflow: hidden;
+    }
+
+    .testimonials-track {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .testimonial-card {
@@ -831,21 +839,20 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
-      transition: border-color .2s, box-shadow .2s, transform .2s;
+      flex: 0 0 calc(33.333% - 14px);
+      min-width: 0;
+      transition: border-color .2s, box-shadow .2s;
     }
+
+    @media (max-width: 900px) { .testimonial-card { flex: 0 0 calc(50% - 10px); } }
+    @media (max-width: 580px) { .testimonial-card { flex: 0 0 100%; } }
 
     .testimonial-card:hover {
       border-color: var(--border-b);
       box-shadow: 0 8px 28px rgba(37,99,235,0.08);
-      transform: translateY(-3px);
     }
 
-    .stars {
-      display: flex;
-      gap: 3px;
-      color: #FBBF24;
-      font-size: 14px;
-    }
+    .stars { color: #FBBF24; font-size: 15px; letter-spacing: 1px; }
 
     .testimonial-quote {
       font-size: 14px;
@@ -861,15 +868,10 @@
     }
 
     .author-avatar {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: 700;
-      color: white;
+      object-fit: cover;
       flex-shrink: 0;
     }
 
@@ -883,6 +885,58 @@
       font-size: 12px;
       color: var(--dim);
       margin-top: 1px;
+    }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color .15s, box-shadow .15s;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .carousel-btn:hover {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+      color: var(--blue);
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+      border: none;
+      padding: 0;
+    }
+
+    .carousel-dot.active {
+      background: var(--blue);
+      transform: scale(1.3);
     }
 
     /* ── Stats bar ── */
@@ -1489,59 +1543,151 @@
     <h2 class="section-title">People are landing the jobs</h2>
     <p class="section-sub">Real users, real offers. Here's what they said after their interviews.</p>
 
-    <div class="testimonials-grid">
+    <div class="testimonials-carousel-wrap">
+      <div class="testimonials-viewport">
+        <div class="testimonials-track" id="testimonialsTrack">
 
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-quote">"Got the PM offer at Google after two previous rejections. Jobarro kept me composed — every answer felt structured and confident. I couldn't believe how fast it worked."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar" style="background:#2563EB;">SK</div>
-          <div>
-            <div class="author-name">Sarah K.</div>
-            <div class="author-role">Senior PM → Google</div>
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-quote">"Got the PM offer at Google after two previous rejections. Jobarro kept me composed — every answer felt structured and confident. I couldn't believe how fast it worked."</p>
+            <div class="testimonial-author">
+              <img class="author-avatar" src="https://i.pravatar.cc/80?img=5" alt="Sarah K." />
+              <div><div class="author-name">Sarah K.</div><div class="author-role">Senior PM → Google</div></div>
+            </div>
           </div>
+
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-quote">"System design interviews used to freeze me up. With Jobarro running in the background, the keywords and bullet points kept me on track. Got the Amazon SDE2 offer first try."</p>
+            <div class="testimonial-author">
+              <img class="author-avatar" src="https://i.pravatar.cc/80?img=12" alt="James L." />
+              <div><div class="author-name">James L.</div><div class="author-role">Software Engineer → Amazon</div></div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-quote">"I was interviewing for McKinsey while still at my current job. No time to prep. Jobarro filled that gap perfectly. The AI answers were tailored — not generic. Highly recommend."</p>
+            <div class="testimonial-author">
+              <img class="author-avatar" src="https://i.pravatar.cc/80?img=26" alt="Priya M." />
+              <div><div class="author-name">Priya M.</div><div class="author-role">Business Analyst → McKinsey</div></div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-quote">"Landed a $175k offer at Microsoft after three failed interviews elsewhere. The difference was how calm I felt knowing Jobarro was there. It's genuinely a career changer."</p>
+            <div class="testimonial-author">
+              <img class="author-avatar" src="https://i.pravatar.cc/80?img=15" alt="Marcus T." />
+              <div><div class="author-name">Marcus T.</div><div class="author-role">Data Scientist → Microsoft</div></div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-quote">"Went into my Meta PM loop completely unprepared. Jobarro surfaced the right frameworks in real time — I nailed every product sense question. Got the offer within a week."</p>
+            <div class="testimonial-author">
+              <img class="author-avatar" src="https://i.pravatar.cc/80?img=33" alt="Alex R." />
+              <div><div class="author-name">Alex R.</div><div class="author-role">Product Manager → Meta</div></div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-quote">"As a non-native English speaker I always struggled with articulating my thoughts under pressure. Jobarro gave me the structure I needed. Signed my Apple offer last Monday."</p>
+            <div class="testimonial-author">
+              <img class="author-avatar" src="https://i.pravatar.cc/80?img=44" alt="Sophie B." />
+              <div><div class="author-name">Sophie B.</div><div class="author-role">UX Designer → Apple</div></div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-quote">"The latency is insane — answers appear before the interviewer even finishes their question. Used it for my Stripe ML role. The bullet points matched exactly what they were looking for."</p>
+            <div class="testimonial-author">
+              <img class="author-avatar" src="https://i.pravatar.cc/80?img=57" alt="David C." />
+              <div><div class="author-name">David C.</div><div class="author-role">ML Engineer → Stripe</div></div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-quote">"Three rounds at Deloitte Strategy, back to back. Jobarro kept me sharp through all of them. The keyword suggestions alone were worth the price. Best investment of my job search."</p>
+            <div class="testimonial-author">
+              <img class="author-avatar" src="https://i.pravatar.cc/80?img=63" alt="Emma W." />
+              <div><div class="author-name">Emma W.</div><div class="author-role">Strategy Consultant → Deloitte</div></div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-quote">"System design interviews used to freeze me up. With Jobarro running in the background, the keywords and bullet points kept me on track. Got the Amazon SDE2 offer first try."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar" style="background:#059669;">JL</div>
-          <div>
-            <div class="author-name">James L.</div>
-            <div class="author-role">Software Engineer → Amazon</div>
-          </div>
-        </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prevBtn" onclick="testimonialPrev()" aria-label="Previous">&#8592;</button>
+        <div class="carousel-dots" id="carouselDots"></div>
+        <button class="carousel-btn" id="nextBtn" onclick="testimonialNext()" aria-label="Next">&#8594;</button>
       </div>
-
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-quote">"I was interviewing for McKinsey while still at my current job. No time to prep. Jobarro filled that gap perfectly. The AI answers were tailored — not generic. Highly recommend."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar" style="background:#7C3AED;">PM</div>
-          <div>
-            <div class="author-name">Priya M.</div>
-            <div class="author-role">Business Analyst → McKinsey</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-quote">"Landed a $175k offer at Microsoft after three failed interviews elsewhere. The difference was how calm I felt knowing Jobarro was there. It's genuinely a career changer."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar" style="background:#DC2626;">MT</div>
-          <div>
-            <div class="author-name">Marcus T.</div>
-            <div class="author-role">Data Scientist → Microsoft</div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
+
+<script>
+  (function() {
+    const track = document.getElementById('testimonialsTrack');
+    const dotsContainer = document.getElementById('carouselDots');
+    const cards = track.querySelectorAll('.testimonial-card');
+    let current = 0;
+    let autoTimer;
+
+    function visibleCount() {
+      return window.innerWidth < 580 ? 1 : window.innerWidth < 900 ? 2 : 3;
+    }
+
+    function maxIndex() {
+      return Math.max(0, cards.length - visibleCount());
+    }
+
+    function buildDots() {
+      dotsContainer.innerHTML = '';
+      const count = maxIndex() + 1;
+      for (let i = 0; i < count; i++) {
+        const d = document.createElement('button');
+        d.className = 'carousel-dot' + (i === current ? ' active' : '');
+        d.onclick = () => goTo(i);
+        dotsContainer.appendChild(d);
+      }
+    }
+
+    function goTo(index) {
+      current = Math.max(0, Math.min(index, maxIndex()));
+      const cardWidth = cards[0].offsetWidth + 20;
+      track.style.transform = 'translateX(-' + (current * cardWidth) + 'px)';
+      document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    window.testimonialNext = function() {
+      goTo(current >= maxIndex() ? 0 : current + 1);
+      resetAuto();
+    };
+
+    window.testimonialPrev = function() {
+      goTo(current <= 0 ? maxIndex() : current - 1);
+      resetAuto();
+    };
+
+    function resetAuto() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => goTo(current >= maxIndex() ? 0 : current + 1), 5000);
+    }
+
+    window.addEventListener('resize', () => { buildDots(); goTo(Math.min(current, maxIndex())); });
+
+    buildDots();
+    resetAuto();
+  })();
+</script>
 
 <!-- ── How it works ── -->
 <section id="how">
