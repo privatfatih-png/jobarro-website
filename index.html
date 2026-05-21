@@ -380,6 +380,104 @@
       border: 1px solid #FDE68A;
     }
 
+    /* ── Social proof bar ── */
+    .social-bar {
+      background: #06091A;
+      padding: 22px 32px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .social-bar-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .social-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .avatars {
+      display: flex;
+    }
+
+    .avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 2.5px solid #06091A;
+      margin-left: -12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .avatar:first-child { margin-left: 0; }
+
+    .rating-stars { color: #FBBF24; font-size: 17px; letter-spacing: 1px; }
+
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 3px;
+    }
+
+    .rating-num {
+      font-size: 16px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .rating-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.38);
+    }
+
+    .social-divider {
+      width: 1px;
+      height: 44px;
+      background: rgba(255,255,255,0.1);
+      flex-shrink: 0;
+    }
+
+    .social-stats {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .social-stat-num {
+      display: block;
+      font-size: 24px;
+      font-weight: 800;
+      color: white;
+      letter-spacing: -0.8px;
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+
+    .social-stat-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.32);
+      text-transform: uppercase;
+    }
+
     /* ── Marquee ── */
     .marquee-section {
       background: var(--bg2);
@@ -1192,6 +1290,44 @@
         <span class="pill">communication</span>
       </div>
       <div class="preview-tip">💡 Pause 2 seconds before answering — shows composure</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Social proof bar ── -->
+<div class="social-bar">
+  <div class="social-bar-inner">
+    <div class="social-left">
+      <div class="avatars">
+        <div class="avatar" style="background:linear-gradient(135deg,#3B82F6,#1D4ED8)">JK</div>
+        <div class="avatar" style="background:linear-gradient(135deg,#8B5CF6,#6D28D9)">SM</div>
+        <div class="avatar" style="background:linear-gradient(135deg,#10B981,#065F46)">AT</div>
+        <div class="avatar" style="background:linear-gradient(135deg,#F59E0B,#B45309)">LR</div>
+      </div>
+      <div>
+        <div class="rating-row">
+          <span class="rating-stars">★★★★★</span>
+          <span class="rating-num">4.8</span>
+        </div>
+        <div class="rating-sub">2,739 reviews</div>
+      </div>
+    </div>
+
+    <div class="social-divider"></div>
+
+    <div class="social-stats">
+      <div>
+        <span class="social-stat-num">1M+</span>
+        <span class="social-stat-label">Users</span>
+      </div>
+      <div>
+        <span class="social-stat-num">116ms</span>
+        <span class="social-stat-label">Avg Speed</span>
+      </div>
+      <div>
+        <span class="social-stat-num">50+</span>
+        <span class="social-stat-label">Languages</span>
+      </div>
     </div>
   </div>
 </div>
