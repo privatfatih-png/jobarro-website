@@ -2,5 +2,13 @@
   "rewrites": [
     { "source": "/success", "destination": "/success.html" },
     { "source": "/download", "destination": "/download.html" }
+  ],
+  "headers": [
+    {
+      "source": "/version.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate" }
+      ]
+    }
   ]
 }
