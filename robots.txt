@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /success
+Disallow: /download
+Disallow: /version.json
 
 Sitemap: https://www.jobarro.com/sitemap.xml
