@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Jobarro</title>
+  <meta name="description" content="Jobarro's privacy policy. Learn exactly what data we collect, how audio is processed in real time and never stored, and how the stealth overlay keeps you invisible." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.jobarro.com/privacy.html" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #ffffff;
+      --bg2:       #F8FAFC;
+      --border:    #E2E8F0;
+      --border-b:  #DBEAFE;
+      --text:      #0F172A;
+      --text-2:    #1E293B;
+      --muted:     #64748B;
+      --dim:       #94A3B8;
+      --blue:      #2563EB;
+      --blue-dark: #1D4ED8;
+      --blue-mid:  #DBEAFE;
+      --blue-lt:   #EFF6FF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 32px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .15s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      padding: 8px 18px;
+      background: var(--blue);
+      color: white;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      text-decoration: none;
+      transition: background .15s;
+    }
+
+    .nav-cta:hover { background: var(--blue-dark); text-decoration: none; }
+
+    /* ── Page header ── */
+    .page-header {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 32px;
+    }
+
+    .page-header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .page-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--blue);
+      background: var(--blue-lt);
+      border: 1px solid var(--border-b);
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      text-decoration: none;
+    }
+
+    .page-header h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .page-header-meta {
+      font-size: 14px;
+      color: var(--dim);
+    }
+
+    /* ── Prose ── */
+    .prose-wrap {
+      padding: 64px 32px 96px;
+    }
+
+    .prose {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .prose h2 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      color: var(--text);
+      margin: 52px 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .prose h2:first-child { margin-top: 0; }
+
+    .prose h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-2);
+      margin: 24px 0 8px;
+    }
+
+    .prose p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .prose ul {
+      margin: 0 0 16px 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .prose ul li {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      display: flex;
+      gap: 10px;
+    }
+
+    .prose ul li::before {
+      content: '→';
+      color: var(--blue);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .prose strong { color: var(--text-2); font-weight: 600; }
+
+    .callout {
+      background: var(--blue-lt);
+      border: 1px solid var(--border-b);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+
+    .callout p {
+      margin: 0;
+      color: var(--text-2);
+      font-size: 14.5px;
+    }
+
+    .callout strong { color: var(--blue); }
+
+    .third-party-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      font-size: 14px;
+    }
+
+    .third-party-table th {
+      text-align: left;
+      padding: 10px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--dim);
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .third-party-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+
+    .third-party-table td:first-child {
+      font-weight: 600;
+      color: var(--text-2);
+      white-space: nowrap;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 64px 32px 0;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 48px;
+      flex-wrap: wrap;
+      padding-bottom: 48px;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 260px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .footer-tagline {
+      font-size: 13px;
+      color: var(--dim);
+      line-height: 1.65;
+    }
+
+    .footer-email {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .15s;
+    }
+
+    .footer-email:hover { color: var(--blue); }
+
+    .footer-cols {
+      display: flex;
+      gap: 56px;
+      flex-wrap: wrap;
+    }
+
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 110px;
+    }
+
+    .footer-col-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--dim);
+      margin-bottom: 2px;
+    }
+
+    .footer-col a {
+      font-size: 13.5px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .15s;
+    }
+
+    .footer-col a:hover { color: var(--blue); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+      font-size: 12.5px;
+      color: var(--dim);
+    }
+
+    @media (max-width: 640px) {
+      nav .nav-links { display: none; }
+      .page-header { padding: 40px 20px; }
+      .prose-wrap { padding: 40px 20px 64px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="https://www.jobarro.com" class="logo">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="30" height="30" rx="8" fill="#2563EB"/>
+        <rect x="6" y="13" width="4" height="9" rx="2" fill="white"/>
+        <rect x="13" y="8" width="4" height="14" rx="2" fill="white"/>
+        <rect x="20" y="11" width="4" height="11" rx="2" fill="white"/>
+      </svg>
+      Jobarro
+    </a>
+    <div class="nav-links">
+      <a href="/#how">How it works</a>
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/privacy.html" style="color: var(--blue); font-weight: 600;">Privacy</a>
+      <a class="nav-cta" href="/#pricing">Get started</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-eyebrow">Privacy &amp; Security</div>
+    <h1>Privacy Policy</h1>
+    <p class="page-header-meta">Last updated: May 24, 2026</p>
+  </div>
+</div>
+
+<div class="prose-wrap">
+  <div class="prose">
+
+    <div class="callout">
+      <p><strong>Short version:</strong> Jobarro processes audio in real time and immediately discards it — nothing is recorded or stored. The stealth overlay is invisible to screen sharing at the Windows OS level. Your interview data never leaves your device.</p>
+    </div>
+
+    <h2>1. Who we are</h2>
+    <p>Jobarro is a Windows desktop application that provides real-time AI assistance during job interviews. We are the operator of <strong>jobarro.com</strong> and the Jobarro desktop application. For privacy questions, contact us at <a href="mailto:hello@jobarro.com">hello@jobarro.com</a>.</p>
+
+    <h2>2. What data we collect</h2>
+
+    <h3>When you make a purchase</h3>
+    <p>Payments are handled by <strong>Stripe</strong>. When you buy a license, Stripe collects your email address and payment details. We receive your email address and a license key from Stripe so we can send you your purchase confirmation. We do not store your card number or any full payment details.</p>
+
+    <h3>When you use the app</h3>
+    <ul>
+      <li><strong>Audio:</strong> Jobarro captures your system audio via Windows WASAPI loopback. This audio is streamed in real time to Deepgram for transcription and is <strong>immediately discarded</strong> — it is never written to disk, stored on our servers, or retained in any form.</li>
+      <li><strong>Transcribed text:</strong> The text of detected interview questions is sent to the Anthropic Claude API to generate answer suggestions. This text is processed in real time and not stored by Jobarro.</li>
+      <li><strong>Session history:</strong> If you choose to review past sessions inside the app, a local summary (the question, answer type, and duration) is stored in a SQLite database on <strong>your device only</strong>. This data never leaves your machine and can be deleted at any time by uninstalling the app.</li>
+      <li><strong>License key:</strong> Your license key is stored locally on your device and sent to our license server to verify your subscription status. No other identifying information is transmitted.</li>
+    </ul>
+
+    <h3>When you visit our website</h3>
+    <p>Our website (jobarro.com) loads fonts from Google Fonts. No tracking cookies, analytics scripts, or advertising pixels are set on this website. We do not use Google Analytics or any third-party behavioral tracking.</p>
+
+    <h2>3. Audio processing — zero retention</h2>
+    <div class="callout">
+      <p><strong>Audio is streamed, never stored.</strong> Jobarro pipes your system audio directly to Deepgram's transcription API over an encrypted WebSocket connection. There is no intermediate recording step. Once transcription completes, the audio stream is discarded. Deepgram's own data retention policy applies to the transcription service; you can review it at <a href="https://deepgram.com/privacy" target="_blank" rel="noopener">deepgram.com/privacy</a>.</p>
+    </div>
+    <p>We have no ability to replay, review, or access your audio or interview content — by design. Jobarro's servers never receive audio data.</p>
+
+    <h2>4. The stealth overlay — how invisibility works</h2>
+    <p>The Jobarro answer overlay is invisible to screen sharing software. This is not a trick or a hack — it uses an official Windows API:</p>
+    <ul>
+      <li>The overlay window is created with the <strong>WS_EX_TOOLWINDOW</strong> extended window style, which excludes it from the taskbar and Alt+Tab.</li>
+      <li>The <strong>SetWindowDisplayAffinity</strong> function is called with the <strong>WDA_EXCLUDEFROMCAPTURE</strong> flag (available on Windows 10 2004 and later). This tells the Windows compositor to exclude the window from any screen capture or recording.</li>
+      <li>Zoom, Microsoft Teams, Google Meet, and any other application that uses the Windows Desktop Duplication API or GDI capture will show a blank region where the overlay sits. Your interviewer sees only your face and whatever you share — the overlay is <strong>technically impossible</strong> for them to detect.</li>
+    </ul>
+    <p>No screen content from your interviewer is ever captured, transmitted, or processed by Jobarro. The app only processes <em>audio</em>, not video.</p>
+
+    <h2>5. Third-party services</h2>
+    <p>Jobarro relies on the following third-party services during normal operation:</p>
+    <table class="third-party-table">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Purpose</th>
+          <th>Data sent</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Deepgram</td>
+          <td>Real-time speech-to-text transcription</td>
+          <td>Audio stream (discarded after transcription)</td>
+        </tr>
+        <tr>
+          <td>Anthropic</td>
+          <td>AI-generated answer suggestions</td>
+          <td>Transcribed question text + your role/industry profile</td>
+        </tr>
+        <tr>
+          <td>Stripe</td>
+          <td>Payment processing</td>
+          <td>Email address and payment details (handled directly by Stripe)</td>
+        </tr>
+        <tr>
+          <td>Railway</td>
+          <td>License key verification server</td>
+          <td>Your license key (to verify subscription status)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Each of these services has its own privacy policy. Jobarro selects services that operate under industry-standard data protection practices and, where applicable, comply with GDPR.</p>
+
+    <h2>6. Data storage and security</h2>
+    <ul>
+      <li><strong>On your device:</strong> Session history summaries and app settings are stored locally in an SQLite database inside the Jobarro application data folder. Uninstalling the app removes this data.</li>
+      <li><strong>On our servers:</strong> We store only your email address and license key status (active/expired). No audio, transcripts, or conversation data is stored server-side — ever.</li>
+      <li><strong>In transit:</strong> All communication between Jobarro and external services (Deepgram, Anthropic, our license server) uses TLS 1.2+ encryption.</li>
+    </ul>
+
+    <h2>7. Data retention</h2>
+    <ul>
+      <li><strong>Audio:</strong> Not retained. Zero retention.</li>
+      <li><strong>Transcripts and AI answers:</strong> Not retained by Jobarro. Processed in real time and discarded.</li>
+      <li><strong>Local session history:</strong> Retained on your device until you uninstall the app or clear it manually in settings.</li>
+      <li><strong>Purchase records:</strong> Your email and license status are retained for as long as your subscription is active, and for up to 2 years afterward for support and accounting purposes.</li>
+    </ul>
+
+    <h2>8. Your rights</h2>
+    <p>Depending on your location, you may have rights under GDPR (EU/EEA), UK GDPR, CCPA (California), or similar laws. These include the right to:</p>
+    <ul>
+      <li>Access the personal data we hold about you</li>
+      <li>Request correction of inaccurate data</li>
+      <li>Request deletion of your data</li>
+      <li>Object to or restrict processing</li>
+      <li>Withdraw consent at any time (where processing is based on consent)</li>
+    </ul>
+    <p>To exercise any of these rights, email us at <a href="mailto:hello@jobarro.com">hello@jobarro.com</a>. We will respond within 30 days.</p>
+
+    <h2>9. Children</h2>
+    <p>Jobarro is not directed at children under the age of 16. We do not knowingly collect personal data from anyone under 16. If you believe a minor has provided us with personal data, please contact us and we will delete it promptly.</p>
+
+    <h2>10. Changes to this policy</h2>
+    <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last updated" date at the top of this page. If the changes are material, we will notify active license holders by email. Continued use of Jobarro after changes are posted constitutes acceptance of the updated policy.</p>
+
+    <h2>11. Contact</h2>
+    <p>For any privacy-related questions, requests, or concerns:</p>
+    <ul>
+      <li><strong>Email:</strong> <a href="mailto:hello@jobarro.com">hello@jobarro.com</a></li>
+      <li><strong>Response time:</strong> We aim to respond within 2 business days</li>
+    </ul>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="https://www.jobarro.com" class="footer-logo">
+        <svg width="26" height="26" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="30" height="30" rx="8" fill="#2563EB"/>
+          <rect x="6" y="13" width="4" height="9" rx="2" fill="white"/>
+          <rect x="13" y="8" width="4" height="14" rx="2" fill="white"/>
+          <rect x="20" y="11" width="4" height="11" rx="2" fill="white"/>
+        </svg>
+        Jobarro
+      </a>
+      <p class="footer-tagline">Real-time AI interview copilot for Windows. Invisible to screen sharing.</p>
+      <a class="footer-email" href="mailto:hello@jobarro.com">hello@jobarro.com</a>
+    </div>
+
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="/#how">How it works</a>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/download.html">Download</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Legal</div>
+        <a href="/privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    &copy; 2026 Jobarro. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
