@@ -843,7 +843,7 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
-      flex: 0 0 calc(33.333% - 14px);
+      flex: 0 0 calc(25% - 15px);
       min-width: 0;
       transition: border-color .2s, box-shadow .2s;
     }
@@ -1766,10 +1766,9 @@
     const dotsContainer = document.getElementById('carouselDots');
     const cards = track.querySelectorAll('.testimonial-card');
     let current = 0;
-    let autoTimer;
 
     function visibleCount() {
-      return window.innerWidth < 580 ? 1 : window.innerWidth < 900 ? 2 : 3;
+      return window.innerWidth < 580 ? 1 : window.innerWidth < 900 ? 2 : 4;
     }
 
     function maxIndex() {
@@ -1798,23 +1797,15 @@
 
     window.testimonialNext = function() {
       goTo(current >= maxIndex() ? 0 : current + 1);
-      resetAuto();
     };
 
     window.testimonialPrev = function() {
       goTo(current <= 0 ? maxIndex() : current - 1);
-      resetAuto();
     };
-
-    function resetAuto() {
-      clearInterval(autoTimer);
-      autoTimer = setInterval(() => goTo(current >= maxIndex() ? 0 : current + 1), 5000);
-    }
 
     window.addEventListener('resize', () => { buildDots(); goTo(Math.min(current, maxIndex())); });
 
     buildDots();
-    resetAuto();
   })();
 </script>
 
