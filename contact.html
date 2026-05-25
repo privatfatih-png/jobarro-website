@@ -474,9 +474,7 @@
         <p>✓ Message sent — we'll get back to you within one business day.</p>
       </div>
 
-      <form class="contact-form" id="contactForm"
-            action="https://formspree.io/f/YOUR_FORM_ID"
-            method="POST">
+      <form class="contact-form" id="contactForm">
 
         <div class="form-row">
           <div class="form-group">
@@ -602,32 +600,45 @@
 </footer>
 
 <script>
+  const SERVER = 'https://jobarro-server-production.up.railway.app';
   const form = document.getElementById('contactForm');
   const btn = document.getElementById('submitBtn');
   const successMsg = document.getElementById('successMsg');
+
+  const SEND_ICON = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>`;
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
+    const body = {
+      name:    form.querySelector('#name').value.trim(),
+      email:   form.querySelector('#email').value.trim(),
+      subject: form.querySelector('#subject').value,
+      message: form.querySelector('#message').value.trim(),
+    };
+
     try {
-      const res = await fetch(form.action, {
+      const res = await fetch(`${SERVER}/api/contact`, {
         method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
       });
 
       if (res.ok) {
         form.style.display = 'none';
         successMsg.classList.add('visible');
       } else {
-        throw new Error();
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Unknown error');
       }
-    } catch {
+    } catch (err) {
       btn.disabled = false;
-      btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send message`;
-      alert('Something went wrong. Please email us directly at hello@jobarro.com');
+      btn.innerHTML = `${SEND_ICON} Send message`;
+      alert(err.message === 'Please wait before submitting again'
+        ? 'Please wait a moment before sending another message.'
+        : 'Something went wrong. Please email us at hello@jobarro.com');
     }
   });
 </script>
