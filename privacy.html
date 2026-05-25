@@ -87,6 +87,11 @@
 
     .nav-links a:hover { color: var(--text); }
 
+    .nav-active { color: var(--blue) !important; font-weight: 600; }
+
+    .nav-links .nav-cta,
+    .nav-links .nav-cta:hover { color: white; }
+
     .nav-cta {
       padding: 8px 18px;
       background: var(--blue);
@@ -371,7 +376,7 @@
       <a href="/#how">How it works</a>
       <a href="/#features">Features</a>
       <a href="/#pricing">Pricing</a>
-      <a href="/privacy.html" style="color: var(--blue); font-weight: 600;">Privacy</a>
+      <a href="/privacy.html" class="nav-active">Privacy</a>
       <a class="nav-cta" href="/#pricing">Get started</a>
     </div>
   </div>

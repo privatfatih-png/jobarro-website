@@ -173,6 +173,8 @@
 
     .nav-links a:hover { color: var(--text); }
 
+    .nav-active { color: var(--blue) !important; font-weight: 600; }
+
     .nav-cta {
       padding: 8px 18px;
       background: var(--blue);
@@ -2076,6 +2078,32 @@
   document.getElementById("email-input").addEventListener("keydown", (e) => {
     if (e.key === "Enter") startCheckout();
   });
+</script>
+
+<script>
+  (function() {
+    const sectionIds = ['how', 'features', 'pricing', 'faq'];
+    const links = {};
+    sectionIds.forEach(id => {
+      const link = document.querySelector(`.nav-links a[href="#${id}"]`);
+      if (link) links[id] = link;
+    });
+
+    function update() {
+      const scrollY = window.scrollY + 80;
+      let active = null;
+      sectionIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= scrollY) active = id;
+      });
+      Object.entries(links).forEach(([id, link]) => {
+        link.classList.toggle('nav-active', id === active);
+      });
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
 </script>
 </body>
 </html>
