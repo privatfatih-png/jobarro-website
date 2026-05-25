@@ -385,6 +385,64 @@
       border: 1px solid #FDE68A;
     }
 
+    /* ── Platform compat strip ── */
+    .compat-strip {
+      padding: 18px 32px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .compat-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .compat-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dim);
+      flex-shrink: 0;
+      padding-right: 4px;
+    }
+    .compat-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+    .compat-logos {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .compat-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      white-space: nowrap;
+      opacity: 0.75;
+      transition: opacity 0.15s;
+    }
+    .compat-item:hover { opacity: 1; }
+    .compat-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      flex-shrink: 0;
+      display: block;
+    }
+
     /* ── Social proof bar ── */
     .social-bar {
       background: var(--bg);
@@ -1557,6 +1615,93 @@
         <span class="pill">communication</span>
       </div>
       <div class="preview-tip">💡 Pause 2 seconds before answering — shows composure</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Platform compatibility strip ── -->
+<div class="compat-strip">
+  <div class="compat-inner">
+    <span class="compat-label">Works with</span>
+    <div class="compat-divider"></div>
+    <div class="compat-logos">
+
+      <!-- Zoom -->
+      <div class="compat-item">
+        <svg class="compat-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="20" height="20" rx="5" fill="#0B5CFF"/>
+          <path d="M4 7.5h7.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1-.5-.5V8a.5.5 0 0 1 .5-.5z" fill="white"/>
+          <path d="M12.5 9.2l3-1.7v5l-3-1.7V9.2z" fill="white"/>
+        </svg>
+        <span>Zoom</span>
+      </div>
+
+      <!-- Google Meet -->
+      <div class="compat-item">
+        <svg class="compat-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="20" height="20" rx="5" fill="#00897B"/>
+          <path d="M3.5 8h7a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5z" fill="white"/>
+          <path d="M11.5 9.5l3.5-2v5l-3.5-2V9.5z" fill="white"/>
+        </svg>
+        <span>Google Meet</span>
+      </div>
+
+      <!-- Microsoft Teams -->
+      <div class="compat-item">
+        <svg class="compat-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="20" height="20" rx="5" fill="#6264A7"/>
+          <path d="M7 6h6v1.5H11v6.5H9V7.5H7V6z" fill="white"/>
+        </svg>
+        <span>Teams</span>
+      </div>
+
+      <!-- Cisco Webex -->
+      <div class="compat-item">
+        <svg class="compat-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="20" height="20" rx="5" fill="#00BFB3"/>
+          <path d="M4 10a6 6 0 1 1 12 0 6 6 0 0 1-12 0z" fill="none" stroke="white" stroke-width="1.5"/>
+          <path d="M7.5 10a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0z" fill="white"/>
+        </svg>
+        <span>Webex</span>
+      </div>
+
+      <!-- Amazon Chime -->
+      <div class="compat-item">
+        <svg class="compat-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="20" height="20" rx="5" fill="#232F3E"/>
+          <path d="M10 4a4 4 0 0 1 4 4c0 2-1 3.5-2.5 4.5H8.5C7 11.5 6 10 6 8a4 4 0 0 1 4-4z" fill="white"/>
+          <rect x="7.5" y="13.5" width="5" height="1.5" rx=".75" fill="#FF9900"/>
+        </svg>
+        <span>Chime</span>
+      </div>
+
+      <!-- HackerRank -->
+      <div class="compat-item">
+        <svg class="compat-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="20" height="20" rx="5" fill="#2EC866"/>
+          <path d="M5.5 6h2v3.25h5V6h2v8h-2v-3.25h-5V14h-2V6z" fill="white"/>
+        </svg>
+        <span>HackerRank</span>
+      </div>
+
+      <!-- CoderPad -->
+      <div class="compat-item">
+        <svg class="compat-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="20" height="20" rx="5" fill="#E8522A"/>
+          <path d="M7.5 7.5L5 10l2.5 2.5M12.5 7.5L15 10l-2.5 2.5M9.5 13l1-6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>CoderPad</span>
+      </div>
+
+      <!-- Codility -->
+      <div class="compat-item">
+        <svg class="compat-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="20" height="20" rx="5" fill="#1A1A2E"/>
+          <path d="M13 7.5A4.5 4.5 0 1 0 13 12.5" stroke="#F4D03F" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <span>Codility</span>
+      </div>
+
     </div>
   </div>
 </div>
